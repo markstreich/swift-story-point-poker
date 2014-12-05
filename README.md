@@ -18,4 +18,4 @@ cd swift-story-point-poker
 ```
 * Install CocoaPods if you don't have it - `sudo gem install cocoapods`
 * Add SIOSocket to your project - `pod setup && pod install`
-* Open the `AppName.xcworkspace` in Xcode (always open this instead of the `AppName.xcodeproj`)
+* In Xcode, open `.xcworkspace` (do not use the `.xcodeproj` file)
