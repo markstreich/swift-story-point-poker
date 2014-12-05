@@ -1,0 +1,13 @@
+*.lock
+
+# xcode noise
+build/*
+swift-storypp.xcodeproj/xcuserdata/
+swift-storypp.xcworkspace/xcuserdata/
+
+# osx noise
+.DS_Store
+profile
+
+# cocoapod noise
+Pods/*
