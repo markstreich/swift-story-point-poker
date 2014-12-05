@@ -11,6 +11,9 @@ Work in progress. This might eventually allow remote teams to play story point p
 * SIOSocket
 * socket.io code from [BrewMobile](https://github.com/brewfactory/BrewMobile)
 
+### See Also
+* [Node Socket.io Server](https://github.com/markstreich/story-point-poker/)
+
 ### Installing
 ```sh
 git clone https://github.com/markstreich/swift-story-point-poker.git
