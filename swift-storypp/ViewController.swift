@@ -1,6 +1,6 @@
 import UIKit
 
-let host = "http://spp.gllen.com:3000/"
+let host = "http://spp.gllen.com/"
 var io: SIOSocket!
 
 class ViewController: UITableViewController, UITextFieldDelegate {

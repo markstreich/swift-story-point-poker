@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="What's your username?" id="Wql-UO-wSf" userLabel="Input Section">
+                            <tableViewSection headerTitle="What's your nickname?" id="Wql-UO-wSf" userLabel="Input Section">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5mU-uN-uzu">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -79,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTc-Rr-Evt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9" y="471"/>
+            <point key="canvasLocation" x="404" y="505"/>
         </scene>
     </scenes>
 </document>
