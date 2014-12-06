@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="What's your nickname?" id="Wql-UO-wSf" userLabel="Input Section">
+                            <tableViewSection headerTitle="Join a room" id="Wql-UO-wSf" userLabel="Input Section">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5mU-uN-uzu">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -31,9 +31,29 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="join" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="txtUsernameChanged:" destination="Lgu-IH-I6K" eventType="valueChanged" id="7iZ-Or-vZ0"/>
-                                                        <action selector="txtUsernameChanged:" destination="Lgu-IH-I6K" eventType="editingChanged" id="q7B-hP-iMf"/>
-                                                        <action selector="txtUsernameSubmit:" destination="Lgu-IH-I6K" eventType="editingDidEnd" id="BEp-nQ-zij"/>
+                                                        <action selector="txtUsernameChanged:" destination="Lgu-IH-I6K" eventType="editingChanged" id="zh5-d3-7zb"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="0hq-NG-cOB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0hq-NG-cOB" id="3k4-ea-zfH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQ4-C9-nWF">
+                                                    <rect key="frame" x="21" y="11" width="82" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Public" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XL4-zj-mKw">
+                                                    <rect key="frame" x="111" y="7" width="489" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="join" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="txtRoomnameChanged:" destination="Lgu-IH-I6K" eventType="editingChanged" id="ZJC-9E-haY"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -74,6 +94,7 @@
                     </tableView>
                     <connections>
                         <outlet property="btnJoin" destination="oc4-0J-3je" id="FAS-eV-CWQ"/>
+                        <outlet property="txtRoomname" destination="XL4-zj-mKw" id="Ii8-yl-ges"/>
                         <outlet property="txtUsername" destination="ig1-2z-gOE" id="3k9-C1-QBA"/>
                     </connections>
                 </tableViewController>

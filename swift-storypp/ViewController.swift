@@ -1,20 +1,28 @@
 import UIKit
 
-let host = "http://spp.gllen.com/"
+let host = "http://spp.gllen.com:3000/"
+
+let validUsernameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
+let validRoomnameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
+
 var io: SIOSocket!
 
 class ViewController: UITableViewController, UITextFieldDelegate {
-
+    
+    @IBOutlet weak var txtRoomname: UITextField!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var btnJoin: UIButton!
     
     @IBAction func btnJoinPressed(sender: UIButton) {
         attemptLogin()
     }
-    
 
     @IBAction func txtUsernameChanged(sender: UITextField) {
-        usernameEntryValidate()
+        joinFormValidate()
+    }
+    
+    @IBAction func txtRoomnameChanged(sender: UITextField) {
+        joinFormValidate()
     }
     
     override func viewDidLoad() {
@@ -22,7 +30,7 @@ class ViewController: UITableViewController, UITextFieldDelegate {
         
         self.txtUsername.delegate = self
         
-        usernameEntryValidate()
+        joinFormValidate()
         self.connectToHost()
     }
 
@@ -32,13 +40,21 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func attemptLogin() {
-        io.emit("add user", args: [txtUsername.text])
+        var joinRoomname = txtRoomname.text
+        if joinRoomname == "" {
+            joinRoomname = "public"
+        }
+        io.emit("join", args: [[
+            "username": txtUsername.text,
+            "roomname": joinRoomname
+            ]])
     }
     
-    func usernameEntryValidate() {
+    func joinFormValidate() {
         txtUsername.text = cleanUsername(txtUsername.text)
+        txtRoomname.text = cleanRoomname(txtRoomname.text)
         
-        if isUsernameValid(txtUsername.text) {
+        if isUsernameValid(txtUsername.text) && isRoomnameValid(txtUsername.text) {
             btnJoin.enabled = true
         } else {
             btnJoin.enabled = false
@@ -53,18 +69,40 @@ class ViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    func isRoomnameValid(attemptedRoomname: String) -> Bool {
+        if countElements(attemptedRoomname) < 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     func cleanUsername(attemptedUsername: String) -> String {
-
-        var charactersToRemove = NSCharacterSet.alphanumericCharacterSet().invertedSet
+        
+        var charactersToRemove = NSCharacterSet(charactersInString: validUsernameCharacters).invertedSet
         var cleanedUsername = "".join(attemptedUsername.componentsSeparatedByCharactersInSet(charactersToRemove))
         
-        if countElements(attemptedUsername) > 12 {
+        if countElements(cleanedUsername) > 12 {
             let validRange = Range(start: cleanedUsername.startIndex, end: advance(cleanedUsername.startIndex,12))
             return cleanedUsername.substringWithRange(validRange)
         }
         
         return cleanedUsername
-
+        
+    }
+    
+    func cleanRoomname(attemptedRoomname: String) -> String {
+        
+        var charactersToRemove = NSCharacterSet(charactersInString: validRoomnameCharacters).invertedSet
+        var cleanedRoomname = "".join(attemptedRoomname.componentsSeparatedByCharactersInSet(charactersToRemove))
+        
+        if countElements(cleanedRoomname) > 24 {
+            let validRange = Range(start: cleanedRoomname.startIndex, end: advance(cleanedRoomname.startIndex,24))
+            return cleanedRoomname.substringWithRange(validRange)
+        }
+        
+        return cleanedRoomname
+        
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
