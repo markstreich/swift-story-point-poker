@@ -5,6 +5,9 @@ var messages: [ChatMessage] = [ChatMessage]()
 class ChatViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tblRoom: UITableView!
+    @IBOutlet weak var lblRoomname: UINavigationItem!
+    
+    var roomname: String = ""
     
     override func viewDidLoad() {
         
@@ -12,6 +15,8 @@ class ChatViewController: UITableViewController, UITableViewDataSource, UITableV
         
         self.tblRoom.estimatedRowHeight = 40.0
         self.tblRoom.rowHeight = UITableViewAutomaticDimension;
+        
+        self.lblRoomname.title = self.roomname
         
     }
     
