@@ -116,25 +116,28 @@ class LoginViewController: UITableViewController, UITextFieldDelegate {
             io = socket
             
             var chatViewController: ChatViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vcChatViewController") as ChatViewController
-            
+            var navViewController: UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("nvcChatController") as UINavigationController
             
             socket.onConnect = {
-                // testing: io.emit("join", args: [[ "username": "iostesting", "roomname": "public" ]])
+                // testing: 
+                io.emit("join", args: [[ "username": "iostesting", "roomname": "public" ]])
                 println("Connected to \(host)")
             }
             
             socket.on("login", callback: {(AnyObject aodata) -> Void in
-                // testing: socket.emit("new message", args: ["ssssdfh sdfuhods houdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfhio fgdohigdf hoisfh odsfho fsdoh sdfho fsdoh iup"])
+                // testing: 
+                socket.emit("new message", args: ["ssssdfh sdfuhods houdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfhio fgdohigdf hoisfh odsfho fsdoh sdfho fsdoh iup"])
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     println(["login": aodata])
                     
                     if let data = aodata[0] as? NSDictionary {
                         if let roomname = data["roomname"] as? String {
-                            chatViewController.roomname = roomname
                             if let username = data["username"] as? String {
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    self.presentViewController(chatViewController, animated: true, completion: nil)
+                                    self.presentViewController(navViewController, animated: true, completion: nil)
+                                    chatViewController = navViewController.topViewController as ChatViewController
+                                    chatViewController.setRoomname(roomname)
                                 })
                             }
                         }
@@ -162,9 +165,7 @@ class LoginViewController: UITableViewController, UITextFieldDelegate {
                         if let username = data["username"] as? String {
                             dispatch_async(dispatch_get_main_queue(), {
                                 messages.append(ChatMessage(username: username, message: message))
-                                chatViewController.tableView.reloadData()
-
-                                
+                                chatViewController.tableView.reloadData()                                
                                 let delay = 0.1 * Double(NSEC_PER_SEC)
                                 let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                                 dispatch_after(time, dispatch_get_main_queue(), {

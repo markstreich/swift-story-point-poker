@@ -5,7 +5,10 @@ var messages: [ChatMessage] = [ChatMessage]()
 class ChatViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tblRoom: UITableView!
+    
     @IBOutlet weak var lblRoomname: UINavigationItem!
+    
+    var keyboardSize: CGSize!
     
     var roomname: String = ""
     
@@ -15,14 +18,12 @@ class ChatViewController: UITableViewController, UITableViewDataSource, UITableV
         
         self.tblRoom.estimatedRowHeight = 40.0
         self.tblRoom.rowHeight = UITableViewAutomaticDimension;
-        
-        self.lblRoomname.title = self.roomname
+     
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.tblRoom.reloadData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +50,31 @@ class ChatViewController: UITableViewController, UITableViewDataSource, UITableV
         cell.lblMessage.attributedText = mtlMessage
 
         return cell
+    }
+    
+    
+    func setRoomname(roomname: String) {
+        self.roomname = roomname
+        self.lblRoomname.title = roomname
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        let info: Dictionary = notification.userInfo!
+        if let aValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+            keyboardSize = aValue.CGRectValue().size
+        }
+        println(keyboardSize.height + tblRoom.contentInset.bottom)
+        var contentInsets: UIEdgeInsets = UIEdgeInsetsMake(tblRoom.contentInset.top, tblRoom.contentInset.left, (keyboardSize.height + tblRoom.contentInset.bottom), tblRoom.contentInset.right)
+        tblRoom.con
+        
+        let isPortrait = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation)
+        let isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+        
+        if isPortrait {
+            println("Device is in PORTRAIT orientation and the keyboard size is \(keyboardSize.height)")
+        } else if isLandscape {
+            println("Device is in LANDSCAPE orientation and the keyboard size is \(keyboardSize.height)")
+        }
     }
     
 }

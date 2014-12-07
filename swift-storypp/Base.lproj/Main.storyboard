@@ -92,6 +92,7 @@
                             <outlet property="delegate" destination="Lgu-IH-I6K" id="75b-EE-DgT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="7zc-M4-3eI"/>
                     <connections>
                         <outlet property="btnJoin" destination="oc4-0J-3je" id="FAS-eV-CWQ"/>
                         <outlet property="txtRoomname" destination="XL4-zj-mKw" id="Ii8-yl-ges"/>
@@ -100,23 +101,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTc-Rr-Evt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="507"/>
+            <point key="canvasLocation" x="-461" y="1194"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Room-->
         <scene sceneID="wNk-Pf-PfX">
             <objects>
                 <tableViewController storyboardIdentifier="vcChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a32-q8-KHH" customClass="ChatViewController" customModule="swift_storypp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="j0I-rL-HMg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Tkz-c0-RuM">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Roomname" id="dON-mN-XNa"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="uep-zQ-Z4Q" rowHeight="40" style="IBUITableViewCellStyleDefault" id="T4k-iB-aSW" customClass="ChatMessageCell" customModule="swift_storypp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -141,14 +135,45 @@
                             <outlet property="delegate" destination="a32-q8-KHH" id="xpj-nI-IOu"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" id="VPp-3C-h6l">
+                            <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="xKA-5a-4Hz">
+                                <rect key="frame" x="0.0" y="-30" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Room" id="6YV-qw-ghX"/>
                     <connections>
-                        <outlet property="lblRoomname" destination="dON-mN-XNa" id="ZBa-rH-WIL"/>
+                        <outlet property="lblRoomname" destination="6YV-qw-ghX" id="nUp-Wp-AOc"/>
                         <outlet property="tblRoom" destination="j0I-rL-HMg" id="cIh-HX-Hvb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zd-X2-6E5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="769"/>
+            <point key="canvasLocation" x="255" y="1875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Ke-VB-uEd">
+            <objects>
+                <navigationController storyboardIdentifier="nvcChatController" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="p9w-qa-9wl" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hf3-qj-pJZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="6VV-Qi-9ua">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="a32-q8-KHH" kind="relationship" relationship="rootViewController" id="LMc-up-cbG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZU-dd-NOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-456" y="1875"/>
         </scene>
     </scenes>
 </document>
