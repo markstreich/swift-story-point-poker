@@ -7,7 +7,7 @@ let validRoomnameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW
 
 var io: SIOSocket!
 
-class ViewController: UITableViewController, UITextFieldDelegate {
+class LoginViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var txtRoomname: UITextField!
     @IBOutlet weak var txtUsername: UITextField!
@@ -115,13 +115,20 @@ class ViewController: UITableViewController, UITextFieldDelegate {
             
             io = socket
             
+            var chatViewController: ChatViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vcChatViewController") as ChatViewController
+            
             socket.onConnect = {
+                // testing: io.emit("join", args: [[ "username": "iostesting", "roomname": "public" ]])
                 println("Connected to \(host)")
             }
             
             socket.on("login", callback: {(AnyObject data) -> Void in
-                println(["login": data])
-                socket.emit("new message", args: ["sssup"])
+                // testing: socket.emit("new message", args: ["ssssdfh sdfuhods houdfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdoudfisgh fdgih dfgi hfgdhi fdghi ofgdhio gf hoifgd hiogdfhio fgdohigdf hoisfh odsfho fsdoh sdfho fsdoh iup"])
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    println(["login": data])
+                    self.presentViewController(chatViewController, animated: true, completion: nil)
+                })
             })
             
             socket.on("login error", callback: {(AnyObject aodata) -> Void in
@@ -135,6 +142,21 @@ class ViewController: UITableViewController, UITextFieldDelegate {
                 }
             })
             
+            socket.on("new message", callback: {(AnyObject aodata) -> Void in
+                println(["new message": aodata])
+                if let data = aodata[0] as? NSDictionary {
+                    if let message = data["message"] as? String {
+                        if let username = data["username"] as? String {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                messages.append(ChatMessage(username: username, message: message))
+                                chatViewController.tableView.reloadData()
+                            })
+                        }
+                    }
+                }
+            })
+
+            
 
             
             socket.onDisconnect = {
@@ -144,6 +166,8 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     }
 
 }
+
+
 
 public class Alert: NSObject {
     

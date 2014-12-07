@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991DE6B71A33BDB70056B4BB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991DE6B61A33BDB70056B4BB /* ChatViewController.swift */; };
+		991DE6BC1A33C0030056B4BB /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991DE6BB1A33C0030056B4BB /* ChatMessageCell.swift */; };
+		991DE6BE1A33C1C30056B4BB /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991DE6BD1A33C1C30056B4BB /* ChatMessage.swift */; };
 		995D2DAC1A2F803C0028382C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D2DAB1A2F803C0028382C /* AppDelegate.swift */; };
-		995D2DAE1A2F803C0028382C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D2DAD1A2F803C0028382C /* ViewController.swift */; };
+		995D2DAE1A2F803C0028382C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D2DAD1A2F803C0028382C /* LoginViewController.swift */; };
 		995D2DB11A2F803C0028382C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995D2DAF1A2F803C0028382C /* Main.storyboard */; };
 		995D2DB31A2F803C0028382C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995D2DB21A2F803C0028382C /* Images.xcassets */; };
 		995D2DB61A2F803C0028382C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995D2DB41A2F803C0028382C /* LaunchScreen.xib */; };
@@ -30,10 +33,13 @@
 /* Begin PBXFileReference section */
 		1F77661910B0F394626A85FE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		40246C3709311E2D214855CE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		991DE6B61A33BDB70056B4BB /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		991DE6BB1A33C0030056B4BB /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		991DE6BD1A33C1C30056B4BB /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		995D2DA61A2F803C0028382C /* swift-storypp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-storypp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		995D2DAA1A2F803C0028382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		995D2DAB1A2F803C0028382C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		995D2DAD1A2F803C0028382C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		995D2DAD1A2F803C0028382C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		995D2DB01A2F803C0028382C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		995D2DB21A2F803C0028382C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		995D2DB51A2F803C0028382C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -97,12 +103,15 @@
 		995D2DA81A2F803C0028382C /* swift-storypp */ = {
 			isa = PBXGroup;
 			children = (
+				991DE6B61A33BDB70056B4BB /* ChatViewController.swift */,
 				995D2DAB1A2F803C0028382C /* AppDelegate.swift */,
-				995D2DAD1A2F803C0028382C /* ViewController.swift */,
+				995D2DAD1A2F803C0028382C /* LoginViewController.swift */,
 				995D2DAF1A2F803C0028382C /* Main.storyboard */,
 				995D2DB21A2F803C0028382C /* Images.xcassets */,
 				995D2DB41A2F803C0028382C /* LaunchScreen.xib */,
 				995D2DA91A2F803C0028382C /* Supporting Files */,
+				991DE6BB1A33C0030056B4BB /* ChatMessageCell.swift */,
+				991DE6BD1A33C1C30056B4BB /* ChatMessage.swift */,
 			);
 			path = "swift-storypp";
 			sourceTree = "<group>";
@@ -307,7 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995D2DAE1A2F803C0028382C /* ViewController.swift in Sources */,
+				995D2DAE1A2F803C0028382C /* LoginViewController.swift in Sources */,
+				991DE6BC1A33C0030056B4BB /* ChatMessageCell.swift in Sources */,
+				991DE6B71A33BDB70056B4BB /* ChatViewController.swift in Sources */,
+				991DE6BE1A33C1C30056B4BB /* ChatMessage.swift in Sources */,
 				995D2DAC1A2F803C0028382C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

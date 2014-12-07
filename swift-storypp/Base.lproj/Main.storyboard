@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="iIy-KN-v6g">
             <objects>
-                <tableViewController id="Lgu-IH-I6K" customClass="ViewController" customModule="swift_storypp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="vcLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lgu-IH-I6K" customClass="LoginViewController" customModule="swift_storypp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VlL-Dd-zPB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,7 +100,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTc-Rr-Evt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="505"/>
+            <point key="canvasLocation" x="281" y="507"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="wNk-Pf-PfX">
+            <objects>
+                <tableViewController storyboardIdentifier="vcChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a32-q8-KHH" customClass="ChatViewController" customModule="swift_storypp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="139" sectionHeaderHeight="22" sectionFooterHeight="22" id="j0I-rL-HMg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="uep-zQ-Z4Q" rowHeight="139" style="IBUITableViewCellStyleDefault" id="T4k-iB-aSW" customClass="ChatMessageCell" customModule="swift_storypp" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T4k-iB-aSW" id="7Zn-DJ-iDI">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uep-zQ-Z4Q">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblMessage" destination="uep-zQ-Z4Q" id="s3z-TU-hZz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a32-q8-KHH" id="Qhy-tJ-ZJO"/>
+                            <outlet property="delegate" destination="a32-q8-KHH" id="xpj-nI-IOu"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tblRoom" destination="j0I-rL-HMg" id="cIh-HX-Hvb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6zd-X2-6E5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="796"/>
         </scene>
     </scenes>
 </document>
